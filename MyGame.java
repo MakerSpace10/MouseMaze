@@ -15,8 +15,6 @@ public class MyGame extends Game  {
     //The x and y will directly corilate to the rows and cols of the maze
     public int mouseX;
     public int mouseY;
-    public int playerrow = 1;
-    public int playercol = 0;
     public int[][] maze = new int[8][8];
     //Board origin
     public int ogx = 175;
@@ -134,9 +132,8 @@ public class MyGame extends Game  {
         //https://www.educative.io/answers/how-to-listen-to-and-take-action-on-keyboard-strokes-in-java
         //Remember to add && statments to avoid going out of bounds
         System.out.println(ke.getKeyCode() + "");
-        if (ke.getKeyCode() == KeyEvent.VK_UP && mouseY - 100 >= ogy && maze[playerrow - 1][playercol] != 0) {
+        if (ke.getKeyCode() == KeyEvent.VK_UP && mouseY - 100 >= ogy) {
             mouseY -= 100;
-            playerrow--;
         }else if (ke.getKeyCode() == KeyEvent.VK_DOWN && mouseY + 100 < ogy + 800) {
             mouseY += 100;
         }else if (ke.getKeyCode() == KeyEvent.VK_LEFT && mouseX - 100 >= ogx) {
