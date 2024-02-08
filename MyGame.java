@@ -29,7 +29,15 @@ public class MyGame extends Game  {
         //Read from the file to create the maze format: 1 is free space, 0 is blocked space.
         //Doesn't work without try{}
         try {
-            File file = new File("level1.txt");   
+            File file = new File("level1.txt");
+            int levelNum = (int)((Math.random() * 3) + 1);
+            if(levelNum == 1){
+                file = new File("level1.txt");
+            }else if(levelNum == 2){
+                file = new File("level2.txt");
+            }else if(levelNum == 3){
+                file = new File("level3.txt");
+            }   
             BufferedReader br = new BufferedReader(new FileReader(file)); 
             String st;
             int r = 0; 
