@@ -15,6 +15,8 @@ public class MyGame extends Game  {
     //The x and y will directly corilate to the rows and cols of the maze
     public int mouseX;
     public int mouseY;
+    public int playerrow = 0;
+    public int playercol = 0;
     public int[][] maze = new int[8][8];
     //Board origin
     public int ogx = 175;
@@ -83,38 +85,54 @@ public class MyGame extends Game  {
         int playerY = ogy;
         //Setting x value
         if(mouseX >= 175 && mouseX < 275){
+            mouseX = 175;
             playerX = 175;
         }else if(mouseX >= 275 && mouseX < 375){
+            mouseX = 275;
             playerX = 275;
         }else if(mouseX >= 375 && mouseX < 475){
+            mouseX = 375;
             playerX = 375;
         }else if(mouseX >= 475 && mouseX < 575){
+            mouseX = 475;
             playerX = 475;
         }else if(mouseX >= 575 && mouseX < 675){
+            mouseX = 575;
             playerX = 575;
         }else if(mouseX >= 675 && mouseX < 775){
+            mouseX = 675;
             playerX = 675;
         }else if(mouseX >= 775 && mouseX < 875){
+            mouseX = 775;
             playerX = 775;
         }else if(mouseX >= 875 && mouseX < 975){
+            mouseX = 875;
             playerX = 875;
         }
         //Setting y value:
         if(mouseY >= 10 && mouseY < 110){
+            mouseY = 10;
             playerY = 10;
         }else if(mouseY >= 110 && mouseY < 210){
+            mouseY = 110;
             playerY = 110;
         }else if(mouseY >= 210 && mouseY < 310){
+            mouseY = 210;
             playerY = 210;
         }else if(mouseY >= 310 && mouseY < 410){
+            mouseY = 310;
             playerY = 310;
         }else if(mouseY >= 410 && mouseY < 510){
+            mouseY = 410;
             playerY = 410;
         }else if(mouseY >= 510 && mouseY < 610){
+            mouseY = 510;
             playerY = 510;
         }else if(mouseY >= 610 && mouseY < 710){
+            mouseY = 610;
             playerY = 610;
         }else if(mouseY >= 710 && mouseY < 810){
+            mouseY = 710;
             playerY = 710;
         }
  
@@ -122,6 +140,7 @@ public class MyGame extends Game  {
         pen.setColor(Color.BLUE);
         pen.drawRect(playerX, playerY, 100, 100);
         pen.fillRect(playerX, playerY, 100, 100);
+    
     }
         
     @Override
@@ -132,16 +151,19 @@ public class MyGame extends Game  {
         //https://www.educative.io/answers/how-to-listen-to-and-take-action-on-keyboard-strokes-in-java
         //Remember to add && statments to avoid going out of bounds
         System.out.println(ke.getKeyCode() + "");
-        if (ke.getKeyCode() == KeyEvent.VK_UP && mouseY - 100 >= ogy) {
+        if (ke.getKeyCode() == KeyEvent.VK_UP && mouseY - 100 >= ogy && maze[playerrow - 1][playercol] != 0) {
             mouseY -= 100;
-        }else if (ke.getKeyCode() == KeyEvent.VK_DOWN && mouseY + 100 < ogy + 800) {
+            playerrow--;
+        }else if (ke.getKeyCode() == KeyEvent.VK_DOWN && mouseY + 100 < ogy + 800 && maze[playerrow + 1][playercol] != 0) {
             mouseY += 100;
-        }else if (ke.getKeyCode() == KeyEvent.VK_LEFT && mouseX - 100 >= ogx) {
+            playerrow++;
+        }else if (ke.getKeyCode() == KeyEvent.VK_LEFT && mouseX - 100 >= ogx && maze[playerrow][playercol - 1] != 0) {
             mouseX -= 100;
-        }else if (ke.getKeyCode() == KeyEvent.VK_RIGHT && mouseX + 100 < ogx + 800) {
+            playercol--;
+        }else if (ke.getKeyCode() == KeyEvent.VK_RIGHT && mouseX + 100 < ogx + 800 && maze[playerrow][playercol + 1] != 0) {
             mouseX += 100;
+            playercol++;
         }
-
     }
 
     @Override
