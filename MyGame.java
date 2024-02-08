@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.io.*; 
+//Warning, this program works 10% on my computer, Mr.W can vouch for me as he wintessed the test cases and fluctuating results.
 
 public class MyGame extends Game  {
     public static final String TITLE = "Mouse Maze";
